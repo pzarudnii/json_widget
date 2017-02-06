@@ -22,7 +22,7 @@ public class JsonWidget extends AppWidgetProvider {
         //Объект RemoteViews дает нам доступ к отображаемым в виджете элементам:
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.json_widget);
         //в данном случае - к TextView
-        views.setTextViewText(R.id.appwidget_text, WAITING_MESSAGE);
+        //views.setTextViewText(R.id.appwidget_text, WAITING_MESSAGE);
         appWidgetManager.updateAppWidget(appWidgetId, views);
 
         String output;
@@ -40,13 +40,16 @@ public class JsonWidget extends AppWidgetProvider {
             }
 
         } catch (Exception e) {
-            output = e.toString();
+            output = "";
         }
-        //выводим в виджет результат
-        views.setTextViewText(R.id.appwidget_text, output);
 
-        // Instruct the widget manager to update the widget
-        appWidgetManager.updateAppWidget(appWidgetId, views);
+        if (!output.equals("")) {
+            //выводим в виджет результат
+            views.setTextViewText(R.id.appwidget_text, output);
+
+            // Instruct the widget manager to update the widget
+            appWidgetManager.updateAppWidget(appWidgetId, views);
+        }
     }
 
     @Override
@@ -101,13 +104,15 @@ public class JsonWidget extends AppWidgetProvider {
                 }
 
             } catch (Exception e) {
-                output = e.toString();
+                output = "";
             }
 
-            remoteViews.setTextViewText(R.id.appwidget_text, output);
+            if (!output.equals("")) {
+                remoteViews.setTextViewText(R.id.appwidget_text, output);
 
-            //widget manager to update the widget
-            appWidgetManager.updateAppWidget(watchWidget, remoteViews);
+                //widget manager to update the widget
+                appWidgetManager.updateAppWidget(watchWidget, remoteViews);
+            }
 
         }
     }

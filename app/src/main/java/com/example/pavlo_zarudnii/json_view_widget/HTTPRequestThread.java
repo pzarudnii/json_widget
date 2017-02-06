@@ -33,25 +33,12 @@ class HTTPRequestThread extends Thread{
             output = "USD:" + JSONParser.getPrice(response.toString());
 
         } catch (Exception e) {
-            output = e.toString();
+            output = "";
         }
     }
 
     @Override
     public void run() {
         requestPrice();
-    }
-
-    private String getTimeStamp() {
-        Calendar calendar = Calendar.getInstance();
-        if(calendar.get(Calendar.MINUTE)>9) {
-
-            return "Time: " + calendar.get(Calendar.HOUR_OF_DAY)
-                    + ":" + calendar.get(Calendar.MINUTE);
-        } else {
-            return "Time: " + calendar.get(Calendar.HOUR_OF_DAY)
-                    + ":0" + calendar.get(Calendar.MINUTE);
-        }
-
     }
 }
