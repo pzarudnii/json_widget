@@ -7,4 +7,5 @@
     android:previewImage="@drawable/example_appwidget_preview"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="1440000"
-    android:widgetCategory="home_screen"></appwidget-provider>
+    android:widgetCategory="home_screen"
+    android:configure="com.example.pavlo_zarudnii.json_view_widget.SettingsActivity"></appwidget-provider>
